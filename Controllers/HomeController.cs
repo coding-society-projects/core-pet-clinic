@@ -28,6 +28,24 @@ namespace PetClinic.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult SearchResult(String search)
+        {
+            List<Veterinary> veterinaries = _dbContext.Veterinaries.Where(v => v.city.Equals(search)).ToList();
+            ViewBag.Veterinaries = veterinaries;
+            ViewBag.city = search;
+            return View();
+        }
+
+        public IActionResult Veterinary(int id)
+        {
+            Veterinary vet = _dbContext.Veterinaries.FirstOrDefault(v => v.Id == id);
+            // ViewBag.vet = vet;
+            var model = vet;
+            return View(model);
+        }
+
+
         public IActionResult Privacy()
         {
             return View();

@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Search Result";
+}
+
+<div class="text-center">
+    <h1 class="display-4">PetClinic</h1>
+    <p>Search city: @ViewBag.city</p>
+</div>
+
+<div>
+    @foreach (var Vet in ViewBag.Veterinaries)
+    {
+        @Vet.name
+        <hr />
+    }
+</div>
+

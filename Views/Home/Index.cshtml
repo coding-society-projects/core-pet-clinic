@@ -3,14 +3,19 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">PetClinic</h1>
+    <form method="post" asp-controller="Home" asp-action="SearchResult">
+        <input type="text" name="search" placeholder="search" />
+        <input type="submit" />
+    </form>
 </div>
 
 <div>
     @foreach (var Vet in ViewBag.Veterinaries)
     {
-        @Vet.name
+    <a asp-controller="Home"
+       asp-action="Veterinary" 
+       asp-route-id="@Vet.Id">@Vet.name</a>
         <hr />
     }
 </div>
